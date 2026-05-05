@@ -1,0 +1,215 @@
+/* ============================================
+   CONTACT SECTION STYLES
+   ============================================ */
+
+.contact-section {
+  position: relative;
+  padding: clamp(64px, 10vw, 100px) clamp(24px, 5vw, 80px);
+  overflow: hidden;
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-intro {
+  font-size: 14px;
+  color: rgba(200, 220, 215, 0.45);
+  line-height: 1.85;
+  margin-bottom: 52px;
+}
+
+/* Two-col grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ── Form ── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(0, 255, 180, 0.35);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contact-input {
+  background: rgba(0, 255, 180, 0.02);
+  border: 1px solid rgba(0, 255, 180, 0.1);
+  border-radius: 3px;
+  padding: 11px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #e8f4f0;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+  width: 100%;
+}
+.contact-input::placeholder {
+  color: rgba(200, 220, 215, 0.2);
+}
+.contact-input:focus {
+  border-color: rgba(0, 255, 180, 0.35);
+}
+.contact-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.contact-textarea {
+  min-height: 120px;
+  line-height: 1.7;
+}
+
+.contact-submit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: #080c10;
+  background: var(--color-accent);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+.contact-submit:hover:not(:disabled) {
+  background: #00e8a0;
+  transform: translateY(-1px);
+}
+.contact-submit:disabled {
+  cursor: not-allowed;
+}
+.contact-submit.sending {
+  background: rgba(0, 255, 180, 0.4);
+  color: rgba(8, 12, 16, 0.7);
+}
+.contact-submit.sent {
+  background: rgba(0, 255, 180, 0.15);
+  color: rgba(0, 255, 180, 0.7);
+  border: 1px solid rgba(0, 255, 180, 0.25);
+}
+
+.contact-error {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 80, 80, 0.7);
+  letter-spacing: 0.06em;
+}
+
+/* ── Right col ── */
+.contact-right {
+  padding-top: 4px;
+}
+
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-social-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(0, 255, 180, 0.08);
+  border-radius: 4px;
+  padding: 14px 16px;
+  background: rgba(0, 255, 180, 0.015);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.contact-social-card:hover {
+  border-color: rgba(0, 255, 180, 0.22);
+  background: rgba(0, 255, 180, 0.03);
+}
+
+.contact-social-symbol {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(0, 255, 180, 0.6);
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.contact-social-info {
+  flex: 1;
+}
+.contact-social-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #e8f4f0;
+  margin-bottom: 2px;
+}
+.contact-social-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(0, 255, 180, 0.35);
+  letter-spacing: 0.06em;
+}
+
+.contact-social-arrow {
+  font-size: 14px;
+  color: rgba(0, 255, 180, 0.25);
+  transition: color 0.2s;
+}
+.contact-social-card:hover .contact-social-arrow {
+  color: var(--color-accent);
+}
+
+/* ── Availability ── */
+.contact-availability {
+  border: 1px solid rgba(0, 255, 180, 0.08);
+  border-radius: 4px;
+  padding: 20px;
+  background: rgba(0, 255, 180, 0.015);
+}
+
+.contact-avail-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.contact-avail-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(0, 255, 180, 0.6);
+  letter-spacing: 0.08em;
+}
+
+.contact-avail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

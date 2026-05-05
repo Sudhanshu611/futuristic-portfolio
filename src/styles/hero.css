@@ -2,7 +2,111 @@
    HERO SECTION STYLES
    ============================================ */
 
-/* Scanning animation */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 clamp(24px, 5vw, 80px);
+  overflow: hidden;
+}
+
+/* ── Two-column layout ── */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 48px;
+  align-items: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 0 48px;
+}
+@media (max-width: 960px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    padding: 60px 0 48px;
+  }
+}
+
+.hero-content { max-width: 480px; }
+
+/* ── Right column ── */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* ── Neural viz ── */
+.hero-neural-wrap {
+  border: 1px solid rgba(0, 255, 180, 0.1);
+  border-radius: 4px;
+  padding: 14px 16px;
+  background: rgba(0, 255, 180, 0.02);
+}
+
+.hero-neural-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(0, 255, 180, 0.3);
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+}
+
+.hero-neural-svg {
+  width: 100%;
+  height: 180px;
+  display: block;
+}
+
+/* Node pulse ring */
+.hero-node-pulse {
+  animation: node-pulse 2s ease-out infinite;
+}
+@keyframes node-pulse {
+  0%   { r: 6;  opacity: 0.5; }
+  100% { r: 14; opacity: 0;   }
+}
+
+/* Active node glow */
+.hero-node-active {
+  animation: node-glow 2.5s ease-in-out infinite;
+}
+@keyframes node-glow {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.4; }
+}
+
+/* Signal bar */
+.hero-neural-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(0, 255, 180, 0.06);
+}
+.hero-neural-bar-seg {
+  flex: 1;
+  background: rgba(0, 255, 180, 0.2);
+  border-radius: 1px;
+  animation: bar-wave 1.4s ease-in-out infinite;
+}
+@keyframes bar-wave {
+  0%, 100% { height: 3px;  opacity: 0.3; }
+  50%       { height: 12px; opacity: 0.7; }
+}
+
+/* Scan line */
 .hero-scan-line {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -15,16 +119,14 @@
 @keyframes hero-scan {
   0%   { top: 0;    opacity: 0.6; }
   85%  { opacity: 0.6; }
-  100% { top: 100%; opacity: 0; }
+  100% { top: 100%; opacity: 0;   }
 }
 
 /* Corner brackets */
 .hero-corner {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  opacity: 0.2;
-  z-index: 1;
+  width: 14px; height: 14px;
+  opacity: 0.2; z-index: 1;
 }
 .hero-corner-tl { top: 20px;    left: 20px;    border-top: 1px solid var(--color-accent); border-left: 1px solid var(--color-accent); }
 .hero-corner-tr { top: 20px;    right: 20px;   border-top: 1px solid var(--color-accent); border-right: 1px solid var(--color-accent); }
@@ -44,8 +146,7 @@
 }
 .hero-sys-tag-line {
   display: inline-block;
-  width: 16px;
-  height: 1px;
+  width: 16px; height: 1px;
   background: rgba(0, 255, 180, 0.4);
 }
 
@@ -53,7 +154,6 @@
 .hero-sub-name {
   font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 400;
   color: rgba(200, 220, 215, 0.4);
   letter-spacing: 0.06em;
   margin-bottom: 10px;
@@ -82,7 +182,7 @@
   opacity: 0.25;
   border-radius: 1px;
 }
-.hero-dim       { color: rgba(232, 244, 240, 0.3); }
+.hero-dim { color: rgba(232, 244, 240, 0.3); }
 .hero-title-sub {
   font-size: 0.58em;
   font-weight: 700;
@@ -112,7 +212,6 @@
   line-height: 1.8;
   max-width: 430px;
   margin-bottom: 32px;
-  font-weight: 400;
 }
 .hero-em {
   color: rgba(0, 255, 180, 0.7);
@@ -143,6 +242,7 @@
   display: inline-block;
 }
 .btn-primary:hover { background: #00e8a0; transform: translateY(-1px); }
+
 .btn-ghost {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -169,54 +269,48 @@
   align-items: center;
   gap: 8px;
 }
-
-/* Side data panel */
-.hero-side-data {
-  position: absolute;
-  right: clamp(24px, 5vw, 80px);
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  z-index: 2;
+.hero-scroll-arrow {
+  font-size: 12px;
+  color: rgba(0, 255, 180, 0.35);
+  animation: scroll-bob 2s ease-in-out infinite;
 }
-@media (max-width: 900px) {
-  .hero-side-data { display: none; }
+@keyframes scroll-bob {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(3px); }
 }
 
-/* Data card */
+/* Data card — compact for 3-col grid */
 .data-card {
   border: 1px solid rgba(0, 255, 180, 0.12);
-  padding: 12px 16px;
+  padding: 10px 12px;
   border-radius: 4px;
   background: rgba(0, 255, 180, 0.03);
-  min-width: 164px;
 }
 .data-card-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 8px;
   color: rgba(0, 255, 180, 0.4);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 4px;
 }
 .data-card-value {
   font-family: var(--font-mono);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: #e8f4f0;
+  line-height: 1;
 }
 .data-card-unit {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-accent);
-  margin-left: 3px;
+  margin-left: 2px;
 }
 .data-card-sub {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 8px;
   color: rgba(0, 255, 180, 0.3);
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 /* Sparkline */
@@ -224,22 +318,20 @@
   display: flex;
   align-items: flex-end;
   gap: 2px;
-  margin-top: 8px;
-  height: 24px;
+  margin-top: 6px;
+  height: 18px;
 }
 .spark-bar {
-  width: 7px;
+  flex: 1;
   border-radius: 1px;
   background: rgba(0, 255, 180, 0.18);
-  transition: height 0.6s ease, background 0.3s;
 }
 .spark-bar--hi { background: rgba(0, 255, 180, 0.7); }
 
 /* Blinking cursor */
 .hero-cursor {
   display: inline-block;
-  width: 2px;
-  height: 11px;
+  width: 2px; height: 11px;
   background: var(--color-accent);
   margin-left: 3px;
   vertical-align: middle;
@@ -252,14 +344,14 @@
 
 /* Bottom status bar */
 .hero-bottom-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
   border-top: 1px solid rgba(0, 255, 180, 0.07);
   display: flex;
   align-items: center;
-  padding: 0 clamp(24px, 5vw, 80px);
   height: 36px;
   overflow: hidden;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
 }
 .hero-bot-item {
   font-family: var(--font-mono);

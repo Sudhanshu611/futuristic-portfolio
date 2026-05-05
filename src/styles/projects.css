@@ -1,0 +1,127 @@
+/* ============================================
+   PROJECTS SECTION STYLES
+   ============================================ */
+
+.projects-section {
+  position: relative;
+  padding: clamp(64px, 10vw, 100px) clamp(24px, 5vw, 80px);
+  overflow: hidden;
+}
+
+.projects-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 960px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Card ── */
+.project-card {
+  border: 1px solid rgba(0, 255, 180, 0.08);
+  border-radius: 4px;
+  padding: 24px;
+  background: rgba(0, 255, 180, 0.015);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  transition: border-color 0.2s;
+}
+.project-card:hover {
+  border-color: rgba(0, 255, 180, 0.18);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.project-card-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: #e8f4f0;
+  line-height: 1.3;
+}
+.project-card-status {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.project-card-desc {
+  font-size: 12px;
+  color: rgba(200, 220, 215, 0.45);
+  line-height: 1.75;
+  flex: 1;
+}
+
+.project-card-metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 255, 180, 0.07);
+  border-radius: 3px;
+  background: rgba(0, 255, 180, 0.02);
+}
+.project-card-metric-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(0, 255, 180, 0.3);
+  letter-spacing: 0.1em;
+  flex: 1;
+}
+.project-card-metric-value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: #e8f4f0;
+}
+
+.project-card-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.project-card-chip {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(0, 255, 180, 0.4);
+  border: 1px solid rgba(0, 255, 180, 0.12);
+  padding: 3px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+}
+
+.project-card-links {
+  display: flex;
+  gap: 16px;
+  padding-top: 4px;
+}
+.project-card-link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(200, 220, 215, 0.35);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+.project-card-link:hover { color: var(--color-accent); }
+.project-card-link--accent { color: rgba(0, 255, 180, 0.55); }
+.project-card-link--accent:hover { color: var(--color-accent); }
