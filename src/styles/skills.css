@@ -1,0 +1,168 @@
+/* ============================================
+   SKILLS SECTION STYLES
+   ============================================ */
+
+.skills-section {
+  position: relative;
+  padding: clamp(64px, 10vw, 100px) clamp(24px, 5vw, 80px);
+  overflow: hidden;
+}
+
+.skills-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ── Filter row ── */
+.skills-filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+.skills-filter-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(0, 255, 180, 0.4);
+  background: transparent;
+  border: 1px solid rgba(0, 255, 180, 0.12);
+  padding: 6px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.skills-filter-btn:hover {
+  border-color: rgba(0, 255, 180, 0.35);
+  color: rgba(0, 255, 180, 0.7);
+}
+.skills-filter-btn.active {
+  color: #080c10;
+  background: #00ffb4;
+  border-color: #00ffb4;
+}
+
+/* ── Grid ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.skills-grid--single {
+  grid-template-columns: 1fr;
+  max-width: 560px;
+}
+@media (max-width: 720px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Skill group card ── */
+.skill-group-card {
+  border: 1px solid rgba(0, 255, 180, 0.08);
+  border-radius: 4px;
+  padding: 24px;
+  background: rgba(0, 255, 180, 0.015);
+  transition: border-color 0.2s;
+}
+.skill-group-card:hover {
+  border-color: rgba(0, 255, 180, 0.15);
+}
+
+.skill-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.skill-group-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(0, 255, 180, 0.5);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.skill-group-count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(0, 255, 180, 0.22);
+}
+
+/* ── Skill bar item ── */
+.skill-bar-item {
+  margin-bottom: 16px;
+}
+.skill-bar-item:last-child {
+  margin-bottom: 0;
+}
+.skill-bar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+.skill-bar-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #e8f4f0;
+}
+.skill-bar-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.skill-bar-pct {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(0, 255, 180, 0.45);
+}
+.skill-bar-level {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(0, 255, 180, 0.22);
+  letter-spacing: 0.08em;
+}
+
+/* ── Progress bar ── */
+.skill-bar-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 180, 0.07);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 1px;
+  background: rgba(0, 255, 180, 0.45);
+  width: 0;               /* animated by JS via inline style */
+}
+.skill-bar-fill--core {
+  background: rgba(0, 255, 180, 0.82);
+}
+
+/* ── Tools strip ── */
+.skills-tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.skills-tool-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(200, 220, 215, 0.5);
+  border: 1px solid rgba(0, 255, 180, 0.1);
+  padding: 6px 14px;
+  border-radius: 3px;
+  background: rgba(0, 255, 180, 0.02);
+  transition: all 0.2s ease;
+  cursor: default;
+}
+.skills-tool-chip:hover {
+  color: rgba(0, 255, 180, 0.65);
+  border-color: rgba(0, 255, 180, 0.25);
+  background: rgba(0, 255, 180, 0.04);
+}
