@@ -9,11 +9,11 @@ export const aboutData = {
   name:     'Sudhanshu Singh',
   role:     'Aspiring ML Engineer',
   location: 'India',
-  email:    'you@email.com',
-  github:   'yourhandle',
-  linkedin: 'yourhandle',          // optional — leave '' to hide
-  degree:   'B.Tech — Computer Science',
-  university: 'Your University',
+  email:    'sudhanshu0300@gmail.com',
+  github:   'Sudhanshu611',
+  linkedin: 'sudhanshusingh0300',          // optional — leave '' to hide
+  degree:   'B.Tech — Computer Science & Engineering',
+  university: 'Lovely Professional University',
   status:   'open to work',        // 'open to work' | 'employed' | 'freelancing'
 
   // ── Bio paragraphs ────────────────────────────────────────

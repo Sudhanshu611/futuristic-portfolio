@@ -4,8 +4,8 @@ import { fadeInUp, staggerContainer } from '../../animations/variants'
 
 const socials = [
   { symbol: 'GH', label: 'GitHub',    sub: '@Sudhanshu611',       href: 'https://github.com/Sudhanshu611' },
-  { symbol: 'LI', label: 'LinkedIn',  sub: '@sudhanshu-singh',    href: 'https://linkedin.com/in/sudhanshu-singh' },
-  { symbol: 'ML', label: 'Email',     sub: 'your@email.com',      href: 'mailto:your@email.com' },
+  { symbol: 'LI', label: 'LinkedIn',  sub: '@sudhanshusingh0300',    href: 'https://linkedin.com/in/sudhanshusingh0300' },
+  { symbol: 'ML', label: 'Email',     sub: 'sudhanshu0300@gmail.com',      href: 'mailto:sudhanshu0300@gmail.com' },
 ]
 
 const Contact = () => {
@@ -169,7 +169,7 @@ const Contact = () => {
                 <span className="contact-avail-text">open to opportunities</span>
               </div>
               <div className="contact-avail-tags">
-                {['internships', 'research', 'freelance', 'collaborations'].map(t => (
+                {['internships', 'freelance', 'collaborations'].map(t => (
                   <span key={t} className="about-tag">{t}</span>
                 ))}
               </div>

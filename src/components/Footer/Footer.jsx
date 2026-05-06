@@ -6,8 +6,8 @@ import { fadeInUp, staggerContainer } from '../../animations/variants'
 
 const socials = [
   { symbol: 'GH', label: 'GitHub',   href: 'https://github.com/Sudhanshu611' },
-  { symbol: 'LI', label: 'LinkedIn', href: 'https://linkedin.com/in/sudhanshu-singh' },
-  { symbol: 'ML', label: 'Email',    href: 'mailto:your@email.com' },
+  { symbol: 'LI', label: 'LinkedIn', href: 'https://linkedin.com/in/sudhanshusingh0300' },
+  { symbol: 'ML', label: 'Email',    href: 'mailto:sudhanshu0300@gmail.com' },
 ]
 
 const navLinks = [
