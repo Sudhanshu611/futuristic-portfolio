@@ -367,3 +367,9 @@
 @media (max-width: 600px) {
   .hero-bot-item:not(:first-child) { display: none; }
 }
+.hero-neural-canvas {
+  width: 100%;
+  height: 220px;
+  display: block;
+  border-radius: 2px;
+}

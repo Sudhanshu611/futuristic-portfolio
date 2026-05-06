@@ -1,11 +1,37 @@
 import { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import navLinks from '../../data/navLinks'
+
+const scrollTo = (id) => {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeId, setActiveId] = useState('home')
+  const location = useLocation()
+
+  useEffect(() => {
+    const hash = location.hash.replace('#', '')
+    if (hash) setTimeout(() => scrollTo(hash), 100)
+  }, [location])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) setActiveId(e.target.id)
+      }),
+      { rootMargin: '-40% 0px -55% 0px' }
+    )
+    navLinks.forEach(({ id }) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -19,36 +45,38 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
+
+  const handleNavClick = (id) => {
+    setMenuOpen(false)
+    scrollTo(id)
+  }
 
   return (
     <>
       <nav className={`nav-root${scrolled ? ' nav-scrolled' : ''}`}>
 
         {/* ── Logo ── */}
-        <NavLink to="/" className="nav-logo" onClick={() => setMenuOpen(false)}>
+        <button className="nav-logo" onClick={() => handleNavClick('home')}>
           <span className="nav-bracket">[</span>
           <span className="nav-logo-name">Sudhanshu Singh</span>
           <span className="nav-bracket">]</span>
           <span className="nav-pulse-dot nav-logo-dot" />
-        </NavLink>
+        </button>
 
         {/* ── Desktop links ── */}
         <ul className="nav-links-desktop">
-          {navLinks.map(({ label, path }) => (
-            <li key={path}>
-              <NavLink
-                to={path}
-                className={({ isActive }) =>
-                  `nav-link${isActive ? ' nav-link--active' : ''}`
-                }
+          {navLinks.map(({ label, id }) => (
+            <li key={id}>
+              <button
+                onClick={() => handleNavClick(id)}
+                className={`nav-link${activeId === id ? ' nav-link--active' : ''}`}
               >
                 {label}
-              </NavLink>
+              </button>
             </li>
           ))}
         </ul>
@@ -72,11 +100,10 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* ── Mobile menu overlay ── */}
+      {/* ── Mobile menu ── */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               key="backdrop"
               className="nav-backdrop"
@@ -87,7 +114,6 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
             />
 
-            {/* Drawer */}
             <motion.div
               key="mobile-menu"
               className="nav-mobile-menu"
@@ -96,31 +122,28 @@ const Navbar = () => {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22 }}
             >
-              {/* Mobile status */}
               <div className="nav-mobile-status">
-                <span className="nav-pulse-dot" style={{ width: 5, height: 5, borderRadius: '50%', background: 'var(--color-accent)', display: 'inline-block' }} />
+                <span className="nav-pulse-dot" style={{
+                  width: 5, height: 5, borderRadius: '50%',
+                  background: 'var(--color-accent)', display: 'inline-block'
+                }} />
                 open to opportunities
               </div>
 
-              {/* Links */}
               <div className="nav-mobile-links">
-                {navLinks.map(({ label, path }, i) => (
-                  <NavLink
-                    key={path}
-                    to={path}
-                    onClick={() => setMenuOpen(false)}
-                    className={({ isActive }) =>
-                      `nav-mobile-link${isActive ? ' nav-mobile-link--active' : ''}`
-                    }
+                {navLinks.map(({ label, id }, i) => (
+                  <button
+                    key={id}
+                    onClick={() => handleNavClick(id)}
+                    className={`nav-mobile-link${activeId === id ? ' nav-mobile-link--active' : ''}`}
                   >
                     <span className="nav-mobile-index">0{i + 1}</span>
                     <span className="nav-mobile-label">{label}</span>
                     <span className="nav-mobile-arrow">→</span>
-                  </NavLink>
+                  </button>
                 ))}
               </div>
 
-              {/* Mobile footer */}
               <div className="nav-mobile-footer">
                 <span>PORTFOLIO_v2.5</span>
                 <span>·</span>
