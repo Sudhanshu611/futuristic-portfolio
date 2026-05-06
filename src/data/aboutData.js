@@ -2,7 +2,6 @@
 //  ABOUT DATA — edit this file to update your About section
 //  No need to touch any component files.
 // ============================================================
-
 export const aboutData = {
 
   // ── Identity ─────────────────────────────────────────────
@@ -83,5 +82,5 @@ export const aboutData = {
   ],
 
   // ── Resume ────────────────────────────────────────────────
-  resumeUrl: '/resume.pdf',   // drop your PDF in /public folder
+  resumeUrl: '/resume',   // drop your PDF in /public folder
 }
