@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Moon, Sun } from 'lucide-react'
 import navLinks from '../../data/navLinks'
 
 const scrollTo = (id) => {
@@ -12,7 +13,16 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeId, setActiveId] = useState('home')
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
   const location = useLocation()
+  const isLight = theme === 'light'
+
+  useEffect(() => {
+    const root = document.documentElement
+    root.classList.toggle('theme-light', isLight)
+    root.style.colorScheme = isLight ? 'light' : 'dark'
+    localStorage.setItem('theme', theme)
+  }, [isLight, theme])
 
   useEffect(() => {
     const hash = location.hash.replace('#', '')
@@ -81,23 +91,42 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* ── Status (desktop) ── */}
-        <div className="nav-status">
-          <span className="nav-pulse-dot nav-status-dot" />
-          available
-        </div>
+        <div className="nav-actions">
+          {/* ── Status (desktop) ── */}
+          <div className="nav-status">
+            <span className="nav-pulse-dot nav-status-dot" />
+            available
+          </div>
 
-        {/* ── Hamburger (mobile) ── */}
-        <button
-          className="nav-hamburger"
-          onClick={() => setMenuOpen(prev => !prev)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span className={`nav-ham-line${menuOpen ? ' nav-ham-line--open' : ''}`} />
-          <span className={`nav-ham-line nav-ham-line--mid${menuOpen ? ' nav-ham-line--open-mid' : ''}`} />
-          <span className={`nav-ham-line${menuOpen ? ' nav-ham-line--open' : ''}`} />
-        </button>
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={() => setTheme(prev => (prev === 'dark' ? 'light' : 'dark'))}
+            aria-label={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+            aria-pressed={isLight}
+            title={`Switch to ${isLight ? 'dark' : 'light'} mode`}
+          >
+            <span className="theme-toggle-icon theme-toggle-icon--moon">
+              <Moon size={13} strokeWidth={2} />
+            </span>
+            <span className="theme-toggle-icon theme-toggle-icon--sun">
+              <Sun size={13} strokeWidth={2} />
+            </span>
+            <span className="theme-toggle-thumb" />
+          </button>
+
+          {/* ── Hamburger (mobile) ── */}
+          <button
+            className="nav-hamburger"
+            onClick={() => setMenuOpen(prev => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span className={`nav-ham-line${menuOpen ? ' nav-ham-line--open' : ''}`} />
+            <span className={`nav-ham-line nav-ham-line--mid${menuOpen ? ' nav-ham-line--open-mid' : ''}`} />
+            <span className={`nav-ham-line${menuOpen ? ' nav-ham-line--open' : ''}`} />
+          </button>
+        </div>
       </nav>
 
       {/* ── Mobile menu ── */}

@@ -1,6 +1,9 @@
 /* ============================================
    DESIGN TOKENS — import in index.css
    ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
 :root {
   --color-bg:         #080c10;
   --color-surface:    rgba(8, 12, 16, 0.92);
@@ -9,8 +12,8 @@
   --color-text:       #e8f4f0;
   --color-text-muted: rgba(200, 220, 215, 0.55);
   --color-border:     rgba(0, 255, 180, 0.12);
-  --font-display:     'Syne', sans-serif;
-  --font-mono:        'JetBrains Mono', monospace;
+  --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
   --nav-height:       60px;
   --page-gutter:      clamp(18px, 3vw, 48px);
   --page-max:         1360px;
