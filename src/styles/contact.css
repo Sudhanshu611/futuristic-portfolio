@@ -4,19 +4,19 @@
 
 .contact-section {
   position: relative;
-  padding: clamp(64px, 10vw, 100px) clamp(24px, 5vw, 80px);
+  padding: clamp(64px, 8vw, 104px) var(--page-gutter);
   overflow: hidden;
 }
 
 .contact-inner {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
+  width: var(--page-wide);
   margin: 0 auto;
 }
 
 .contact-intro {
-  font-size: 14px;
+  font-size: clamp(15px, 1.08vw, 18px);
   color: rgba(200, 220, 215, 0.45);
   line-height: 1.85;
   margin-bottom: 52px;
@@ -26,7 +26,7 @@
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: clamp(42px, 5vw, 78px);
   align-items: start;
 }
 @media (max-width: 860px) {
@@ -63,7 +63,7 @@
   border-radius: 3px;
   padding: 11px 14px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: clamp(13px, 0.95vw, 15px);
   color: #e8f4f0;
   outline: none;
   transition: border-color 0.2s;
@@ -143,11 +143,12 @@
   padding: 14px 16px;
   background: rgba(0, 255, 180, 0.015);
   text-decoration: none;
-  transition: border-color 0.2s, background 0.2s;
+  transition: transform 0.25s ease, border-color 0.2s, background 0.2s;
 }
 .contact-social-card:hover {
   border-color: rgba(0, 255, 180, 0.22);
   background: rgba(0, 255, 180, 0.03);
+  transform: translateX(6px);
 }
 
 .contact-social-symbol {
@@ -165,7 +166,7 @@
 }
 .contact-social-label {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: clamp(14px, 1vw, 17px);
   font-weight: 700;
   color: #e8f4f0;
   margin-bottom: 2px;
@@ -178,7 +179,7 @@
 }
 
 .contact-social-arrow {
-  font-size: 14px;
+  font-size: clamp(14px, 1vw, 17px);
   color: rgba(0, 255, 180, 0.25);
   transition: color 0.2s;
 }
@@ -192,6 +193,12 @@
   border-radius: 4px;
   padding: 20px;
   background: rgba(0, 255, 180, 0.015);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.contact-availability:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 180, 0.2);
+  background: rgba(0, 255, 180, 0.035);
 }
 
 .contact-avail-row {

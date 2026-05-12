@@ -4,14 +4,14 @@
 
 .about-section {
   position: relative;
-  padding: clamp(64px, 10vw, 100px) clamp(24px, 5vw, 80px);
+  padding: clamp(64px, 8vw, 104px) var(--page-gutter);
   overflow: hidden;
 }
 
 .about-inner {
   position: relative;
   z-index: 1;
-  max-width: 1100px;
+  width: var(--page-wide);
   margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@
 /* Heading */
 .about-heading {
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(34px, 4.4vw, 56px);
   font-weight: 800;
   color: #e8f4f0;
   letter-spacing: -0.02em;
@@ -49,7 +49,7 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;
+  gap: clamp(40px, 5vw, 76px);
 }
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -68,7 +68,7 @@
 /* ── Bio ── */
 .bio-block { margin-bottom: 28px; }
 .about-bio-text {
-  font-size: 14px;
+  font-size: clamp(15px, 1.08vw, 18px);
   color: rgba(200, 220, 215, 0.58);
   line-height: 1.85;
   font-weight: 400;
@@ -96,7 +96,7 @@
 .about-detail-item {}
 .about-detail-val {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: clamp(12px, 0.95vw, 15px);
   color: rgba(200, 220, 215, 0.7);
   letter-spacing: 0.04em;
 }
@@ -122,12 +122,13 @@
   padding: 4px 12px;
   border-radius: 3px;
   background: rgba(0, 255, 180, 0.03);
-  transition: all 0.2s;
+  transition: transform 0.2s ease, border-color 0.2s, color 0.2s, background 0.2s;
 }
 .about-tag:hover {
   border-color: rgba(0, 255, 180, 0.35);
   color: var(--color-accent);
   background: rgba(0, 255, 180, 0.06);
+  transform: translateY(-2px);
 }
 
 /* ── Timeline ── */
@@ -147,6 +148,10 @@
 .tl-item {
   position: relative;
   margin-bottom: 28px;
+  transition: transform 0.25s ease;
+}
+.tl-item:hover {
+  transform: translateX(6px);
 }
 .tl-dot {
   position: absolute;
@@ -173,7 +178,7 @@
 }
 .tl-title {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: clamp(14px, 1vw, 17px);
   font-weight: 700;
   color: #e8f4f0;
   margin-bottom: 3px;
@@ -185,7 +190,7 @@
   margin-bottom: 6px;
 }
 .tl-desc {
-  font-size: 12px;
+  font-size: clamp(13px, 0.95vw, 16px);
   color: rgba(200, 220, 215, 0.42);
   line-height: 1.7;
 }
@@ -206,6 +211,12 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.about-stat-box:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 255, 180, 0.22);
+  background: rgba(0, 255, 180, 0.04);
 }
 .about-stat-num {
   font-family: var(--font-mono);
