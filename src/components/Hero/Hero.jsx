@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import DataCard from './DataCard'
 import { fadeInUp, staggerContainer } from '../../animations/variants'
+import FeaturedWork from '../FeaturedWork/FeaturedWork'
 
 const Hero = () => {
   return (
@@ -66,13 +67,9 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <AIPlayground />
+          {/* <AIPlayground /> */}
 
-          <div className="hero-cards">
-            <DataCard label="model score" value="94.7" unit="%" sub="best validation run" showSparkline />
-            <DataCard label="datasets" value="08" unit="+" sub="cleaned and modeled" />
-            <DataCard label="pipeline" value="01" unit="" sub="training in progress" showCursor />
-          </div>
+          <FeaturedWork />
         </motion.div>
       </div>
 
